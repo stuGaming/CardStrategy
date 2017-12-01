@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts.GameScripts.Model
 {
-    enum BlockType
+    public enum BlockType
     {
         Normal,
         Fire,

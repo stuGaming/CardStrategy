@@ -10,7 +10,9 @@ namespace Assets.Scripts.Tools.MapCreator
 {
     class MapJsonGenerator:MonoBehaviour
     {
+        public string outputString;
         public InputField HeightInput;
+      
         public int gridHeight
         {
             get
@@ -38,6 +40,7 @@ namespace Assets.Scripts.Tools.MapCreator
 
         IEnumerator colorCo()
         {
+            
             for (int i = 0; i < buttons.Count && i < gridHeight; i++)
             {
                 for (int f = 0; f < buttons[0].Count && f < gridwidth; f++)
@@ -45,7 +48,7 @@ namespace Assets.Scripts.Tools.MapCreator
                     buttons[i][f].button.image.color = Color.cyan;
                 }
             }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
 
             for (int i = 0; i < buttons.Count && i < gridHeight; i++)
             {
@@ -61,7 +64,22 @@ namespace Assets.Scripts.Tools.MapCreator
             StartCoroutine(colorCo());
         }
 
+        public void createJSON()
+        {
+            outputString = "";
+            Map map = new Map();
+            map.Width = gridwidth;
+            map.Height = gridHeight;
+            for (int i = 0; i < buttons.Count && i < gridHeight; i++)
+            {
+                for (int f = 0; f < buttons[0].Count && f < gridwidth; f++)
+                {
+                    map.blockTypes.Add(buttons[i][f].type);
+                }
+            }
 
+            outputString = JsonUtility.ToJson(map);
+        }
 
         void Awake()
         {
