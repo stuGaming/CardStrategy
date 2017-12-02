@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Communication.Models;
 using UnityEngine;
 
 namespace Assets.Scripts.Communication.Controllers
@@ -11,6 +12,9 @@ namespace Assets.Scripts.Communication.Controllers
         public static Communicator instance;
 
         public static Dictionary<object, List<CommunicationHandler>> RegisteredHandlers = new Dictionary<object, List<CommunicationHandler>>();
+
+        
+
         public static Dictionary<object, List<object>> RegisteredObjects = new Dictionary<object, List<object>>();
 
         public delegate void CommunicationHandler(Message message);

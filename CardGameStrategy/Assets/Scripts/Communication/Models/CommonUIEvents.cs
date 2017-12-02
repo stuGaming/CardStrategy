@@ -7,6 +7,7 @@ namespace Assets.Scripts.Communication.Models
 {
     enum CommonUIEvents
     {
-        TestEvent
+        TestEvent,
+        ShowCardSelectPanel
     }
 }
